@@ -80,10 +80,15 @@ function addBookToLibrary() {
     bookContainer.appendChild(btn2);
 
     btn2.addEventListener('click', () => {
+        var child = bookContainer.querySelectorAll("p");
         if (btn2.textContent == "OFF") {
             btn2.textContent = "ON";
+            book1.status = "ON";
+            child[3].textContent = book1.status;
         } else if (btn2.textContent == "ON") {
             btn2.textContent = "OFF"
+            book1.status = "OFF";
+            child[3].textContent = book1.status;
         }
     });
 
