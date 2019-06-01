@@ -3,14 +3,12 @@ let myLibrary = [{
         author: "Karl May",
         pages: 450,
         status: "finished",
-        comment: "Great book"
     },
     {
         title: "It",
         author: "Stephen King",
         pages: 550,
         status: "finished",
-        comment: "Good book"
     }
 ];
 
@@ -18,23 +16,13 @@ let myLibrary = [{
 
 
 // the constructor
-function book(title, author, pages, status, comment) {
+function book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
-    this.comment = comment;
 }
 
-
-/*
-var book;
-book = new book("The Foundation", "Isak Isimov", 350, "read it", "good book")
-myLibrary.push(book); */
-
-function addBookToLibrary() {
-    // do stuff here
-}
 
 
 function listBooks(books) {
@@ -48,34 +36,39 @@ console.log(listBooks(myLibrary));
 
 
 
-//Form testing
 var submit = document.getElementById("submit");
 
 submit.addEventListener('click', () => {
-    myFunction();
+    addBookToLibrary();
 
 });
 
-function myFunction() {
+function addBookToLibrary() {
+    var values = [];
     title = document.getElementById("myForm").elements[0].value;
+    values.push(title);
     author = document.getElementById("myForm").elements[1].value;
+    values.push(author);
     pages = document.getElementById("myForm").elements[2].value;
+    values.push(pages);
     status = document.getElementById("myForm").elements[3].value;
-    comment = document.getElementById("myForm").elements[4].value;
+    values.push(status);
 
-    var titletext = document.getElementById("titletext");
-    var authortext = document.getElementById("authortext");
-    var pagestext = document.getElementById("pagestext");
-    var statustext = document.getElementById("statustext");
-    var commenttext = document.getElementById("commenttext");
-
-    book1 = new book(title, author, pages, status, comment)
+    book1 = new book(title, author, pages, status)
     myLibrary.push(book1);
     console.log(listBooks(myLibrary));
 
-    titletext.textContent = title;
-    authortext.textContent = author;
-    pagestext.textContent = pages;
-    statustext.textContent = status;
-    commenttext.textContent = comment;
+    var shelf = document.getElementById("books-container")
+    var bookContainer = document.createElement("div")
+    bookContainer.classList.add('bookContainer');
+    shelf.appendChild(bookContainer);
+
+    for (let i = 0; i < 5; i++) {
+        var item = document.createElement('p');
+        item.classList.add('item');
+        bookContainer.appendChild(item);
+        item.textContent = values[i];
+    }
+
+
 }
