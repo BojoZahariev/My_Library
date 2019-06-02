@@ -1,11 +1,11 @@
 let myLibrary = [];
 
 // the constructor
-function book(title, author, pages, status) {
+function book(title, author, pages, stat) {
 	this.title = title;
 	this.author = author;
 	this.pages = pages;
-	this.status = status;
+	this.stat = stat;
 }
 
 function listBooks(books) {
@@ -31,10 +31,10 @@ function addBookToLibrary() {
 	values.push(author);
 	pages = document.getElementById('myForm').elements[2].value;
 	values.push(pages);
-	status = document.getElementById('myForm').elements[3].value;
-	values.push(status);
+	stat = document.getElementById('myForm').elements[3].value;
+	values.push(stat);
 
-	book1 = new book(title, author, pages, status);
+	book1 = new book(title, author, pages, stat);
 	myLibrary.push(book1);
 
 	var shelf = document.getElementById('books-container');
@@ -74,12 +74,12 @@ function addBookToLibrary() {
 		var child = bookContainer.querySelectorAll('p');
 		if (btn2.textContent == 'OFF') {
 			btn2.textContent = 'ON';
-			book1.status = 'OFF';
-			child[3].textContent = book1.status;
+			book1.stat = 'OFF';
+			child[3].textContent = book1.stat;
 		} else if (btn2.textContent == 'ON') {
 			btn2.textContent = 'OFF';
-			book1.status = 'ON';
-			child[3].textContent = book1.status;
+			book1.stat = 'ON';
+			child[3].textContent = book1.stat;
 		}
 	});
 }
