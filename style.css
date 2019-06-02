@@ -1,1 +1,10 @@
+#books-container {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.bookContainer {
+	flex-basis: 20%;
+	border: 1px solid #222;
+}
 
