@@ -21,9 +21,10 @@ var submit = document.getElementById('submit');
 
 submit.addEventListener('click', () => {
 	addBookToLibrary();
+	newForm.style.display = 'none';
 });
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, stat) {
 	var values = [];
 	title = document.getElementById('myForm').elements[0].value;
 	values.push(title);
@@ -53,12 +54,11 @@ function addBookToLibrary() {
 	//Delete button
 	var btn = document.createElement('BUTTON');
 	btn.classList.add('btn-delete');
-	btn.textContent = bookContainer.dataset.index;
+	btn.textContent = 'Delete';
 	bookContainer.appendChild(btn);
 
 	btn.addEventListener('click', () => {
-		console.log(bookContainer.dataset.index);
-		//replace the obj with an empty str to keep the same index
+		//replace the obj with an empty string to keep the same index
 		myLibrary.splice(bookContainer.dataset.index - 1, 1, ' ');
 		bookContainer.remove();
 		console.log(listBooks(myLibrary));
@@ -83,3 +83,10 @@ function addBookToLibrary() {
 		}
 	});
 }
+
+//New Entry
+var newForm = document.getElementById('newForm');
+var newEntryBtn = document.getElementById('new');
+newEntryBtn.addEventListener('click', () => {
+	newForm.style.display = 'block';
+});
