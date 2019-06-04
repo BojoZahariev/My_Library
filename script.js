@@ -76,7 +76,7 @@ function onStart() {
 	values = [];
 	title = "Something else";
 	values.push(title);
-	author = "Sameone else";
+	author = "Same one else";
 	values.push(author);
 	pages = 49;
 	values.push(pages);
