@@ -32,7 +32,7 @@ submit.addEventListener('click', () => {
 
 var form = document.getElementById('myForm');
 
-
+//Add a new book trough the form
 function addBookToLibrary() {
 	values = [];
 	title = form.elements[0].value;
@@ -79,6 +79,18 @@ function onStart() {
 	author = "Same one else";
 	values.push(author);
 	pages = 49;
+	values.push(pages);
+	stat = 'ON';
+	values.push(stat);
+	newBook();
+
+	//Book3
+	values = [];
+	title = "Another thing";
+	values.push(title);
+	author = "Other author";
+	values.push(author);
+	pages = 678;
 	values.push(pages);
 	stat = 'ON';
 	values.push(stat);
