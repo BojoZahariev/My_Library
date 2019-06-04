@@ -1,4 +1,8 @@
+//Objects array
 let myLibrary = [];
+
+//values storage
+var values = [];
 
 // the constructor
 function book(title, author, pages, stat) {
@@ -16,6 +20,8 @@ function listBooks(books) {
 	return book_names;
 }
 
+
+
 //Submit button
 var submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
@@ -26,9 +32,9 @@ submit.addEventListener('click', () => {
 
 var form = document.getElementById('myForm');
 
-function addBookToLibrary() {
-	var values = [];
 
+function addBookToLibrary() {
+	values = [];
 	title = form.elements[0].value;
 	values.push(title);
 	author = form.elements[1].value;
@@ -38,6 +44,49 @@ function addBookToLibrary() {
 	stat = 'ON';
 	values.push(stat);
 
+	newBook();
+}
+
+//New Entry
+var newForm = document.getElementById('newForm');
+var newEntryBtn = document.getElementById('new');
+newEntryBtn.addEventListener('click', () => {
+	newForm.style.display = 'block';
+	form.elements[0].value = "";
+	form.elements[1].value = "";
+	form.elements[2].value = "";
+});
+
+
+//On load
+function onStart() {
+	//Book1
+	values = [];
+	title = "Vinetou";
+	values.push(title);
+	author = "Karl May";
+	values.push(author);
+	pages = 55;
+	values.push(pages);
+	stat = 'ON';
+	values.push(stat);
+	newBook();
+
+	//Book2
+	values = [];
+	title = "Something else";
+	values.push(title);
+	author = "Sameone else";
+	values.push(author);
+	pages = 49;
+	values.push(pages);
+	stat = 'ON';
+	values.push(stat);
+	newBook();
+}
+
+
+function newBook() {
 	book1 = new book(title, author, pages, stat);
 	myLibrary.push(book1);
 
@@ -87,12 +136,5 @@ function addBookToLibrary() {
 	});
 }
 
-//New Entry
-var newForm = document.getElementById('newForm');
-var newEntryBtn = document.getElementById('new');
-newEntryBtn.addEventListener('click', () => {
-	newForm.style.display = 'block';
-	form.elements[0].value = "";
-	form.elements[1].value = "";
-	form.elements[2].value = "";
-});
+
+onStart();
