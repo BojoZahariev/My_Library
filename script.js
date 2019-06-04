@@ -15,24 +15,27 @@ function listBooks(books) {
 	}
 	return book_names;
 }
-console.log(listBooks(myLibrary));
 
+//Submit button
 var submit = document.getElementById('submit');
-
 submit.addEventListener('click', () => {
 	addBookToLibrary();
 	newForm.style.display = 'none';
 });
 
-function addBookToLibrary(title, author, pages, stat) {
+
+var form = document.getElementById('myForm');
+
+function addBookToLibrary() {
 	var values = [];
-	title = document.getElementById('myForm').elements[0].value;
+
+	title = form.elements[0].value;
 	values.push(title);
-	author = document.getElementById('myForm').elements[1].value;
+	author = form.elements[1].value;
 	values.push(author);
-	pages = document.getElementById('myForm').elements[2].value;
+	pages = form.elements[2].value;
 	values.push(pages);
-	stat = document.getElementById('myForm').elements[3].value;
+	stat = 'ON';
 	values.push(stat);
 
 	book1 = new book(title, author, pages, stat);
@@ -59,7 +62,7 @@ function addBookToLibrary(title, author, pages, stat) {
 
 	btn.addEventListener('click', () => {
 		//replace the obj with an empty string to keep the same index
-		myLibrary.splice(bookContainer.dataset.index - 1, 1, ' ');
+		myLibrary.splice(bookContainer.dataset.index - 1, 1, "");
 		bookContainer.remove();
 		console.log(listBooks(myLibrary));
 	});
@@ -89,4 +92,7 @@ var newForm = document.getElementById('newForm');
 var newEntryBtn = document.getElementById('new');
 newEntryBtn.addEventListener('click', () => {
 	newForm.style.display = 'block';
+	form.elements[0].value = "";
+	form.elements[1].value = "";
+	form.elements[2].value = "";
 });
