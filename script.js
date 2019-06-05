@@ -28,15 +28,14 @@ submit.addEventListener('click', () => {
 	if (form.elements[0].value !== "" && form.elements[1].value !== "" && form.elements[2].value !== "") {
 		addBookToLibrary();
 		newForm.style.display = 'none';
-		console.log(form.elements);
 	}
 });
 
-//Check content 
-var checkContent = function (value) {
-	return value !== "";
-}
-
+//Cancel button
+var cancel = document.getElementById('cancel');
+cancel.addEventListener('click', () => {
+	newForm.style.display = 'none';
+});
 
 
 //Add a new book trough the form
