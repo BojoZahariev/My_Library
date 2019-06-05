@@ -20,17 +20,24 @@ function listBooks(books) {
 	return book_names;
 }
 
-
+var form = document.getElementById('myForm');
 
 //Submit button
 var submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
-	addBookToLibrary();
-	newForm.style.display = 'none';
+	if (form.elements[0].value !== "" && form.elements[1].value !== "" && form.elements[2].value !== "") {
+		addBookToLibrary();
+		newForm.style.display = 'none';
+		console.log(form.elements);
+	}
 });
 
+//Check content 
+var checkContent = function (value) {
+	return value !== "";
+}
 
-var form = document.getElementById('myForm');
+
 
 //Add a new book trough the form
 function addBookToLibrary() {
