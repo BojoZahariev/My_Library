@@ -173,7 +173,7 @@ function listingBooks() {
 	var newArray = myLibrary.concat(arrayB);
 
 	//Clear the empty objects in the array
-	Array.prototype.remove = function () {
+	/*Array.prototype.remove = function () {
 		var what, a = arguments,
 			L = a.length,
 			ax;
@@ -187,6 +187,13 @@ function listingBooks() {
 	};
 
 	newArray.remove("");
+	*/
+
+	var itemInQuestion = "";
+	var index = newArray.indexOf(itemInQuestion);
+	if (index !== -1) {
+		newArray.splice(index, 1);
+	}
 
 	//Display the list cleared of empty objects
 	for (let i = 0; i < newArray.length; i++) {
