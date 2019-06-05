@@ -20,6 +20,8 @@ function listBooks(books) {
 	return book_names;
 }
 
+
+
 var form = document.getElementById('myForm');
 
 //Submit button
@@ -51,6 +53,7 @@ function addBookToLibrary() {
 	values.push(stat);
 
 	newBook();
+	listingBooks();
 }
 
 //New Entry
@@ -101,6 +104,8 @@ function onStart() {
 	stat = 'ON';
 	values.push(stat);
 	newBook();
+
+	listingBooks()
 }
 
 
@@ -132,6 +137,7 @@ function newBook() {
 		myLibrary.splice(bookContainer.dataset.index - 1, 1, "");
 		bookContainer.remove();
 		console.log(listBooks(myLibrary));
+		listingBooks();
 	});
 
 	//toggle button
@@ -152,6 +158,44 @@ function newBook() {
 			child[3].textContent = book1.stat;
 		}
 	});
+
+}
+
+//Displaying list 
+function listingBooks() {
+	const listContainer = document.getElementById("list");
+	while (listContainer.firstChild) {
+		listContainer.removeChild(listContainer.firstChild);
+	}
+
+	//New array copy of myLibrary, so to keep myLibrary indexes
+	var arrayB = [];
+	var newArray = myLibrary.concat(arrayB);
+
+	//Clear the empty objects in the array
+	Array.prototype.remove = function () {
+		var what, a = arguments,
+			L = a.length,
+			ax;
+		while (L && this.length) {
+			what = a[--L];
+			while ((ax = this.indexOf(what)) !== -1) {
+				this.splice(ax, 1);
+			}
+		}
+		return this;
+	};
+
+	newArray.remove("");
+
+	//Display the list cleared of empty objects
+	for (let i = 0; i < newArray.length; i++) {
+		var listItem = document.createElement("li");
+		listItem.classList.add('listItem');
+		listContainer.appendChild(listItem);
+		listItem.textContent = newArray[i].title;
+
+	}
 }
 
 
