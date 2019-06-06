@@ -81,7 +81,7 @@ function onStart() {
 	values = [];
 	title = 'Something else';
 	values.push(title);
-	author = 'Same one else';
+	author = 'Someone else';
 	values.push(author);
 	pages = 49;
 	values.push(pages);
@@ -169,7 +169,7 @@ function listingBooks() {
 	var newArray = myLibrary.concat(arrayB);
 
 	//Clear the empty objects in the array
-	Array.prototype.remove = function() {
+	/*Array.prototype.remove = function() {
 		var what = arguments;
 		var a = arguments;
 		var L = a.length;
@@ -184,6 +184,8 @@ function listingBooks() {
 	};
 
 	newArray.remove('');
+	*/
+	newArray = newArray.filter((e) => e !== '');
 
 	//Display the list cleared of empty objects
 	for (let i = 0; i < newArray.length; i++) {
