@@ -111,8 +111,10 @@ function newBook() {
 	var shelf = document.getElementById('books-container');
 	var bookContainer = document.createElement('div');
 	bookContainer.classList.add('bookContainer');
+	//bookContainer.id = 'item' + myLibrary.length;
 	bookContainer.dataset.index = myLibrary.length;
 	shelf.appendChild(bookContainer);
+	//console.log(bookContainer.id);
 
 	for (let i = 0; i < 5; i++) {
 		var item = document.createElement('p');
@@ -168,31 +170,24 @@ function listingBooks() {
 	var arrayB = [];
 	var newArray = myLibrary.concat(arrayB);
 
-	//Clear the empty objects in the array
-	/*Array.prototype.remove = function() {
-		var what = arguments;
-		var a = arguments;
-		var L = a.length;
-		var ax;
-		while (L && this.length) {
-			what = a[--L];
-			while ((ax = this.indexOf(what)) !== -1) {
-				this.splice(ax, 1);
-			}
-		}
-		return this;
-	};
-
-	newArray.remove('');
-	*/
 	newArray = newArray.filter((e) => e !== '');
+
+	var focusBook = document.getElementById('focus');
 
 	//Display the list cleared of empty objects
 	for (let i = 0; i < newArray.length; i++) {
-		var listItem = document.createElement('li');
+		var listItem = document.createElement('a');
 		listItem.classList.add('listItem');
+		//listItem.href = '#' + 'item' + myLibrary.length;
 		listContainer.appendChild(listItem);
 		listItem.textContent = newArray[i].title;
+
+		listItem.addEventListener('click', () => {
+			focusBook.children[0].textContent = newArray[i].title;
+			focusBook.children[1].textContent = newArray[i].author;
+			focusBook.children[2].textContent = newArray[i].pages;
+			focusBook.children[3].textContent = book1.stat;
+		});
 	}
 
 	console.log(newArray);
