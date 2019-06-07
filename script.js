@@ -162,11 +162,19 @@ function newBook() {
 		if (btn.style.display === 'none') {
 			btn.style.display = 'block';
 			btn2.style.display = 'block';
+			child[0].style.transform = 'none';
+			child[0].style.padding = '20px';
+			child[0].style.marginTop = '5px';
+			child[1].style.position = 'relative';
 			child[2].style.display = 'block';
 			child[3].style.display = 'block';
 		} else {
 			btn.style.display = 'none';
 			btn2.style.display = 'none';
+			child[0].style.transform = 'rotate(90deg)';
+			child[0].style.padding = '5px';
+			child[0].style.marginTop = '70px';
+			child[1].style.position = 'absolute';
 			child[2].style.display = 'none';
 			child[3].style.display = 'none';
 		}
