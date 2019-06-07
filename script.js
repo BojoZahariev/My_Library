@@ -181,42 +181,4 @@ function newBook() {
 	});
 }
 
-/*
-
-//Display list
-function listingBooks() {
-	const listContainer = document.getElementById('list');
-
-	//Clear the list every time to avoid stacking
-	while (listContainer.firstChild) {
-		listContainer.removeChild(listContainer.firstChild);
-	}
-
-	//New array copy of myLibrary, so to keep myLibrary indexes intact
-	var arrayB = [];
-	var newArray = myLibrary.concat(arrayB);
-
-	newArray = newArray.filter((e) => e !== '');
-
-	var focusBook = document.getElementById('focus');
-
-	//Display the list cleared of empty objects
-	for (let i = 0; i < newArray.length; i++) {
-		var listItem = document.createElement('a');
-		listItem.classList.add('listItem');
-		listContainer.appendChild(listItem);
-		listItem.textContent = newArray[i].title;
-
-		listItem.addEventListener('click', () => {
-			focusBook.children[0].textContent = newArray[i].title;
-			focusBook.children[1].textContent = newArray[i].author;
-			focusBook.children[2].textContent = newArray[i].pages;
-			focusBook.children[3].textContent = book1.stat;
-		});
-	}
-
-	console.log(newArray);
-}
-*/
-
 onStart();
