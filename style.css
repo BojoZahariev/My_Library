@@ -137,20 +137,72 @@ table {
 
 /*Content*/
 
+body {
+	background-image: url(images/background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #4b4c4c;
+}
+
+
+
+#new {
+	position: absolute;
+	top: -10px;
+	left: 0;
+	text-align: center;
+	font-size: 25px;
+	color: #fff;
+	padding-top: 230px;
+	width: 200px;
+	height: 400px;
+	background-image: url(images/the-ribbon-287142_640.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	cursor: pointer;
+	-webkit-transition: height 1s;
+	/* For Safari 3.1 to 6.0 */
+	transition: height 1s;
+}
+
+#new:hover {
+	height: 450px;
+}
+
 
 #books-container {
 	display: flex;
 	flex-flow: row-reverse wrap-reverse;
 	justify-content: center;
-	margin-top: 100px;
+	padding: 0px;
+	margin: 100px auto;
+	width: 80%;
 }
+
+#books-container::before {
+	content: "";
+	height: 70px;
+	width: 100%;
+	background-image: url(images/wall-shelf-1324450_1280.png);
+	background-size: cover;
+	background-position: center;
+}
+
 
 .bookContainer {
 	flex-basis: 5%;
-	height: 250px;
+	height: 350px;
 	border: 1px solid #222;
 	position: relative;
 	text-align: center;
+	background-image: url(images/square-2191133_640.jpg);
+	background-size: cover;
+	background-position: center;
+	border-radius: 3px;
+	cursor: pointer;
 }
 
 .item {
@@ -159,20 +211,24 @@ table {
 }
 
 .item:first-child {
-	color: red;
+	color: #fff;
 	-ms-transform: rotate(90deg);
 	/* IE 9 */
 	-webkit-transform: rotate(90deg);
 	/* Safari 3-8 */
 	transform: rotate(90deg);
 	margin-top: 70px;
+	font-size: 20px;
 
 }
 
 .item:nth-child(2) {
 	position: absolute;
-	bottom: 10px;
+	bottom: 5px;
 	text-align: center;
+	padding: 5px;
+	color: #fff;
+
 }
 
 .btn-delete {
@@ -194,13 +250,14 @@ table {
 }
 
 
-
-
-
-
-
 .preview {
+	padding: 0;
 	position: absolute;
-	bottom: 10px;
+	bottom: 100px;
 	width: 400px;
+	height: 550px;
+	background-image: url(images/book-3057902_640.png);
+	background-size: cover;
+	border: none;
+	z-index: 999;
 }
