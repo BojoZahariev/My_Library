@@ -146,12 +146,42 @@ table {
 }
 
 .bookContainer {
-	flex-basis: 10%;
+	flex-basis: 5%;
 	height: 250px;
 	border: 1px solid #222;
+	position: relative;
+	text-align: center;
 }
 
-.item {}
+.item {
+	text-align: center;
+	position: relative;
+}
+
+.item:first-child {
+	color: red;
+	-ms-transform: rotate(90deg);
+	/* IE 9 */
+	-webkit-transform: rotate(90deg);
+	/* Safari 3-8 */
+	transform: rotate(90deg);
+	margin-top: 70px;
+
+}
+
+.item:nth-child(2) {
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+}
+
+.btn-delete {
+	margin: auto;
+}
+
+.btn-toggle {
+	margin: 10px auto;
+}
 
 #newForm {
 	position: absolute;
@@ -160,6 +190,7 @@ table {
 	background-color: aquamarine;
 	border: 2px solid #222;
 	display: none;
+	z-index: 99;
 }
 
 
