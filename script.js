@@ -50,7 +50,6 @@ function addBookToLibrary() {
 	values.push(stat);
 
 	newBook();
-	listingBooks();
 }
 
 //New Entry
@@ -100,8 +99,6 @@ function onStart() {
 	stat = 'ON';
 	values.push(stat);
 	newBook();
-
-	listingBooks();
 }
 
 function newBook() {
@@ -111,10 +108,8 @@ function newBook() {
 	var shelf = document.getElementById('books-container');
 	var bookContainer = document.createElement('div');
 	bookContainer.classList.add('bookContainer');
-	//bookContainer.id = 'item' + myLibrary.length;
 	bookContainer.dataset.index = myLibrary.length;
 	shelf.appendChild(bookContainer);
-	//console.log(bookContainer.id);
 
 	for (let i = 0; i < 5; i++) {
 		var item = document.createElement('p');
@@ -122,6 +117,10 @@ function newBook() {
 		bookContainer.appendChild(item);
 		item.textContent = values[i];
 	}
+
+	var child = bookContainer.querySelectorAll('p');
+	child[2].style.display = 'none';
+	child[3].style.display = 'none';
 
 	//Delete button
 	var btn = document.createElement('BUTTON');
@@ -134,8 +133,9 @@ function newBook() {
 		myLibrary.splice(bookContainer.dataset.index - 1, 1, '');
 		bookContainer.remove();
 		console.log(listBooks(myLibrary));
-		listingBooks();
 	});
+
+	btn.style.display = 'none';
 
 	//toggle button
 	var btn2 = document.createElement('BUTTON');
@@ -144,7 +144,6 @@ function newBook() {
 	bookContainer.appendChild(btn2);
 
 	btn2.addEventListener('click', () => {
-		var child = bookContainer.querySelectorAll('p');
 		if (btn2.textContent == 'OFF') {
 			btn2.textContent = 'ON';
 			book1.stat = 'OFF';
@@ -155,7 +154,26 @@ function newBook() {
 			child[3].textContent = book1.stat;
 		}
 	});
+
+	btn2.style.display = 'none';
+
+	bookContainer.addEventListener('click', () => {
+		bookContainer.classList.toggle('preview');
+		if (btn.style.display === 'none') {
+			btn.style.display = 'block';
+			btn2.style.display = 'block';
+			child[2].style.display = 'block';
+			child[3].style.display = 'block';
+		} else {
+			btn.style.display = 'none';
+			btn2.style.display = 'none';
+			child[2].style.display = 'none';
+			child[3].style.display = 'none';
+		}
+	});
 }
+
+/*
 
 //Display list
 function listingBooks() {
@@ -178,7 +196,6 @@ function listingBooks() {
 	for (let i = 0; i < newArray.length; i++) {
 		var listItem = document.createElement('a');
 		listItem.classList.add('listItem');
-		//listItem.href = '#' + 'item' + myLibrary.length;
 		listContainer.appendChild(listItem);
 		listItem.textContent = newArray[i].title;
 
@@ -192,5 +209,6 @@ function listingBooks() {
 
 	console.log(newArray);
 }
+*/
 
 onStart();
