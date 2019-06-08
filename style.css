@@ -134,7 +134,6 @@ table {
 	border-spacing: 0;
 }
 
-
 /*Content*/
 
 body {
@@ -145,8 +144,6 @@ body {
 	background-size: cover;
 	background-color: #4b4c4c;
 }
-
-
 
 #new {
 	position: absolute;
@@ -159,7 +156,7 @@ body {
 	width: 200px;
 	height: 400px;
 	background-image: url(images/the-ribbon-287142_640.png);
-	background-position: center center;
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	cursor: pointer;
@@ -171,7 +168,6 @@ body {
 #new:hover {
 	height: 450px;
 }
-
 
 #books-container {
 	display: flex;
@@ -191,11 +187,10 @@ body {
 	background-position: center;
 }
 
-
 .bookContainer {
 	flex-basis: 5%;
 	height: 350px;
-	border: 1px solid #222;
+	border: 1px solid #371b07;
 	position: relative;
 	text-align: center;
 	background-image: url(images/square-2191133_640.jpg);
@@ -203,6 +198,7 @@ body {
 	background-position: center;
 	border-radius: 3px;
 	cursor: pointer;
+	transition: all 0.3s;
 }
 
 .item {
@@ -219,7 +215,6 @@ body {
 	transform: rotate(90deg);
 	margin-top: 70px;
 	font-size: 20px;
-
 }
 
 .item:nth-child(2) {
@@ -228,7 +223,6 @@ body {
 	text-align: center;
 	padding: 5px;
 	color: #fff;
-
 }
 
 .btn-delete {
@@ -248,7 +242,6 @@ body {
 	display: none;
 	z-index: 99;
 }
-
 
 .preview {
 	padding: 0;
