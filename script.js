@@ -12,14 +12,6 @@ function book(title, author, pages, stat) {
 	this.stat = stat;
 }
 
-function listBooks(books) {
-	let book_names = [];
-	for (let i = 0; i < books.length; i += 1) {
-		book_names.push(books[i].title);
-	}
-	return book_names;
-}
-
 var form = document.getElementById('myForm');
 
 //Submit button
@@ -46,7 +38,7 @@ function addBookToLibrary() {
 	values.push(author);
 	pages = form.elements[2].value;
 	values.push(pages);
-	stat = 'ON';
+	stat = 'Not Finished';
 	values.push(stat);
 
 	newBook();
@@ -66,37 +58,37 @@ newEntryBtn.addEventListener('click', () => {
 function onStart() {
 	//Book1
 	values = [];
-	title = 'Vinetou';
+	title = 'HYPERION';
 	values.push(title);
-	author = 'Karl May';
+	author = 'Dan Simmons';
 	values.push(author);
-	pages = 55;
+	pages = 482;
 	values.push(pages);
-	stat = 'ON';
+	stat = 'Not Finished';
 	values.push(stat);
 	newBook();
 
 	//Book2
 	values = [];
-	title = 'Something else';
+	title = 'FACTOTUM';
 	values.push(title);
-	author = 'Someone else';
+	author = 'Charles Bukowski';
 	values.push(author);
-	pages = 49;
+	pages = 208;
 	values.push(pages);
-	stat = 'ON';
+	stat = 'Not Finished';
 	values.push(stat);
 	newBook();
 
 	//Book3
 	values = [];
-	title = 'Another thing';
+	title = '1984';
 	values.push(title);
-	author = 'Other author';
+	author = 'George Orwell';
 	values.push(author);
-	pages = 678;
+	pages = 237;
 	values.push(pages);
-	stat = 'ON';
+	stat = 'Not Finished';
 	values.push(stat);
 	newBook();
 }
@@ -132,7 +124,6 @@ function newBook() {
 		//replace the obj with an empty string to keep the same index
 		myLibrary.splice(bookContainer.dataset.index - 1, 1, '');
 		bookContainer.remove();
-		console.log(listBooks(myLibrary));
 	});
 
 	btn.style.display = 'none';
@@ -140,18 +131,20 @@ function newBook() {
 	//toggle button
 	var btn2 = document.createElement('BUTTON');
 	btn2.classList.add('btn-toggle');
-	btn2.textContent = 'OFF';
+	btn2.textContent = 'Finished';
 	bookContainer.appendChild(btn2);
 
 	btn2.addEventListener('click', () => {
-		if (btn2.textContent == 'OFF') {
-			btn2.textContent = 'ON';
-			book1.stat = 'OFF';
+		if (btn2.textContent == 'Finished') {
+			btn2.textContent = 'Not Finished';
+			book1.stat = 'Finished';
 			child[3].textContent = book1.stat;
-		} else if (btn2.textContent == 'ON') {
-			btn2.textContent = 'OFF';
-			book1.stat = 'ON';
+			child[3].style.color = '#76C092';
+		} else if (btn2.textContent == 'Not Finished') {
+			btn2.textContent = 'Finished';
+			book1.stat = 'Not Finished';
 			child[3].textContent = book1.stat;
+			child[3].style.color = '#FF6666';
 		}
 	});
 
@@ -165,6 +158,7 @@ function newBook() {
 			child[0].style.transform = 'none';
 			child[0].style.padding = '20px';
 			child[0].style.marginTop = '5px';
+			child[0].style.fontSize = '40px';
 			child[1].style.position = 'relative';
 			child[2].style.display = 'block';
 			child[3].style.display = 'block';
@@ -173,7 +167,8 @@ function newBook() {
 			btn2.style.display = 'none';
 			child[0].style.transform = 'rotate(90deg)';
 			child[0].style.padding = '5px';
-			child[0].style.marginTop = '70px';
+			child[0].style.marginTop = '140px';
+			child[0].style.fontSize = '25px';
 			child[1].style.position = 'absolute';
 			child[2].style.display = 'none';
 			child[3].style.display = 'none';
