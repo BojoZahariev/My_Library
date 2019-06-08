@@ -156,17 +156,19 @@ body {
 	width: 200px;
 	height: 400px;
 	background-image: url(images/the-ribbon-287142_640.png);
-	background-position: center;
+	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	cursor: pointer;
-	-webkit-transition: height 1s;
+	-webkit-transition: allt 1s;
 	/* For Safari 3.1 to 6.0 */
-	transition: height 1s;
+	transition: all 1s;
 }
 
 #new:hover {
-	height: 450px;
+	height: 440px;
+	width: 200px;
+	padding-top: 260px;
 }
 
 #books-container {
@@ -176,6 +178,7 @@ body {
 	padding: 0px;
 	margin: 100px auto;
 	width: 80%;
+
 }
 
 #books-container::before {
@@ -188,8 +191,8 @@ body {
 }
 
 .bookContainer {
-	flex-basis: 5%;
-	height: 350px;
+	flex-basis: 7%;
+	height: 550px;
 	border: 1px solid #371b07;
 	position: relative;
 	text-align: center;
@@ -198,59 +201,130 @@ body {
 	background-position: center;
 	border-radius: 3px;
 	cursor: pointer;
-	transition: all 0.3s;
+	transition: all 0.2s;
 }
 
 .item {
 	text-align: center;
 	position: relative;
+	width: 100%;
 }
 
 .item:first-child {
-	color: #fff;
+	color: #E5C100;
 	-ms-transform: rotate(90deg);
 	/* IE 9 */
 	-webkit-transform: rotate(90deg);
 	/* Safari 3-8 */
 	transform: rotate(90deg);
-	margin-top: 70px;
-	font-size: 20px;
+	margin-top: 140px;
+	font-size: 25px;
+	font-family: 'Anton', sans-serif;
 }
 
 .item:nth-child(2) {
 	position: absolute;
 	bottom: 5px;
 	text-align: center;
-	padding: 5px;
-	color: #fff;
+	padding: 10px;
+	color: #E5C100;
+}
+
+.item:nth-child(3) {
+	margin-top: 40px;
+	color: #E5C100;
+	color: #000;
+}
+
+.item:nth-child(3)::after {
+	content: ' Pages';
+}
+
+.item:nth-child(4) {
+	margin-top: 20px;
+	color: #FF6666;
 }
 
 .btn-delete {
-	margin: auto;
+
+	width: 100px;
+	padding: 10px;
+	margin: 20px auto;
+	border-radius: 10%;
+	background-color: #76C092;
+	outline: none;
+	font-family: 'Anton', sans-serif;
 }
 
 .btn-toggle {
+
+	width: 100px;
+	padding: 10px;
 	margin: 10px auto;
+	border-radius: 10%;
+	background-color: #76C092;
+	outline: none;
+	font-size: 18px;
+	font-family: 'Anton', sans-serif;
 }
 
 #newForm {
 	position: absolute;
 	top: 5%;
 	left: 40%;
-	background-color: aquamarine;
 	border: 2px solid #222;
 	display: none;
 	z-index: 99;
+	width: 370px;
+	height: 290px;
+	background-image: url(images/postcard-1487216_640.jpg);
+	background-size: cover;
+	background-position: center center;
+	text-align: center;
+	padding-top: 40px;
+
 }
 
+input {
+	width: 250px;
+	font-size: 25px;
+	background-color: transparent;
+	outline: none;
+	color: #222;
+	margin: auto;
+	padding: 10px;
+	outline: none;
+	background: none;
+	background-image: none;
+	border: none;
+	box-shadow: 1px 1px #666565;
+	margin: 5px;
+
+}
+
+#submit,
+#cancel {
+	width: 100px;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10%;
+	background-color: #76C092;
+	outline: none;
+	font-family: 'Anton', sans-serif;
+}
+
+
+
 .preview {
-	padding: 0;
+	padding-top: 50px;
 	position: absolute;
 	bottom: 100px;
 	width: 400px;
 	height: 550px;
 	background-image: url(images/book-3057902_640.png);
 	background-size: cover;
+	background-position: center;
 	border: none;
 	z-index: 999;
+	font-size: 35px;
 }
