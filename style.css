@@ -220,7 +220,8 @@ body {
 	margin-top: 140px;
 	font-size: 25px;
 	font-family: 'Anton', sans-serif;
-	 user-select: none;
+	user-select: none;
+	text-shadow: 2px 2px black;
 }
 
 .item:nth-child(2) {
