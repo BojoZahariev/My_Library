@@ -231,6 +231,7 @@ body {
 	text-align: center;
 	padding: 10px;
 	color: #E5C100;
+	text-shadow: 1px 1px black;
 }
 
 .item:nth-child(3) {
