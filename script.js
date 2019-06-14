@@ -160,6 +160,7 @@ function newBook() {
 			child[0].style.marginTop = '5px';
 			child[0].style.fontSize = '40px';
 			child[1].style.position = 'relative';
+			child[1].style.textShadow = '2px 2px #000';
 			child[2].style.display = 'block';
 			child[3].style.display = 'block';
 		} else {
