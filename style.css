@@ -222,7 +222,7 @@ body {
 	font-size: 25px;
 	font-family: 'Anton', sans-serif;
 	user-select: none;
-	text-shadow: 2px 2px black;
+	text-shadow: 2px 2px #000;
 }
 
 .item:nth-child(2) {
