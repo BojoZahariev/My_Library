@@ -114,20 +114,6 @@ function newBook() {
 	child[2].style.display = 'none';
 	child[3].style.display = 'none';
 
-	//Delete button
-	var btn = document.createElement('BUTTON');
-	btn.classList.add('btn-delete');
-	btn.textContent = 'Delete';
-	bookContainer.appendChild(btn);
-
-	btn.addEventListener('click', () => {
-		//replace the obj with an empty string to keep the same index
-		myLibrary.splice(bookContainer.dataset.index - 1, 1, '');
-		bookContainer.remove();
-	});
-
-	btn.style.display = 'none';
-
 	//toggle button
 	var btn2 = document.createElement('BUTTON');
 	btn2.classList.add('btn-toggle');
@@ -149,6 +135,23 @@ function newBook() {
 	});
 
 	btn2.style.display = 'none';
+	
+	
+	//Delete button
+	var btn = document.createElement('BUTTON');
+	btn.classList.add('btn-delete');
+	btn.textContent = 'Delete';
+	bookContainer.appendChild(btn);
+
+	btn.addEventListener('click', () => {
+		//replace the obj with an empty string to keep the same index
+		myLibrary.splice(bookContainer.dataset.index - 1, 1, '');
+		bookContainer.remove();
+	});
+
+	btn.style.display = 'none';
+
+	
 
 	bookContainer.addEventListener('click', () => {
 		bookContainer.classList.toggle('preview');
