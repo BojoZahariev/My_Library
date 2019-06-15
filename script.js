@@ -1,8 +1,9 @@
-//Objects array
-let myLibrary = [];
+var shelf = document.getElementById('books-container');
+var form = document.getElementById('myForm');
 
-//values storage
-var values = [];
+let myLibrary = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+localStorage.setItem('items', JSON.stringify(myLibrary));
+const data = JSON.parse(localStorage.getItem('items'));
 
 // the constructor
 function book(title, author, pages, stat) {
@@ -12,39 +13,7 @@ function book(title, author, pages, stat) {
 	this.stat = stat;
 }
 
-var form = document.getElementById('myForm');
-
-//Submit button
-var submit = document.getElementById('submit');
-submit.addEventListener('click', () => {
-	if (form.elements[0].value !== '' && form.elements[1].value !== '' && form.elements[2].value !== '') {
-		addBookToLibrary();
-		newForm.style.display = 'none';
-	}
-});
-
-//Cancel button
-var cancel = document.getElementById('cancel');
-cancel.addEventListener('click', () => {
-	newForm.style.display = 'none';
-});
-
-//Add a new book trough the form
-function addBookToLibrary() {
-	values = [];
-	title = form.elements[0].value;
-	values.push(title);
-	author = form.elements[1].value;
-	values.push(author);
-	pages = form.elements[2].value;
-	values.push(pages);
-	stat = 'Not Finished';
-	values.push(stat);
-
-	newBook();
-}
-
-//New Entry
+//New Entry. Open the form
 var newForm = document.getElementById('newForm');
 var newEntryBtn = document.getElementById('new');
 newEntryBtn.addEventListener('click', () => {
@@ -54,89 +23,56 @@ newEntryBtn.addEventListener('click', () => {
 	form.elements[2].value = '';
 });
 
-//On load
-function onStart() {
-	//Book1
-	values = [];
-	title = 'HYPERION';
-	values.push(title);
-	author = 'Dan Simmons';
-	values.push(author);
-	pages = 482;
-	values.push(pages);
-	stat = 'Not Finished';
-	values.push(stat);
-	newBook();
+//Submit button. Add book from the form
+var submit = document.getElementById('submit');
+submit.addEventListener('click', () => {
+	if (form.elements[0].value !== '' && form.elements[1].value !== '' && form.elements[2].value !== '') {
+		newForm.style.display = 'none';
 
-	//Book2
-	values = [];
-	title = 'FACTOTUM';
-	values.push(title);
-	author = 'Charles Bukowski';
-	values.push(author);
-	pages = 208;
-	values.push(pages);
-	stat = 'Not Finished';
-	values.push(stat);
-	newBook();
+		title = form.elements[0].value;
+		author = form.elements[1].value;
+		pages = form.elements[2].value;
+		stat = 'not finished';
 
-	//Book3
-	values = [];
-	title = '1984';
-	values.push(title);
-	author = 'George Orwell';
-	values.push(author);
-	pages = 237;
-	values.push(pages);
-	stat = 'Not Finished';
-	values.push(stat);
-	newBook();
-}
+		addBookToLibrary();
+		booksDisplay(book1);
+	}
+});
 
-function newBook() {
-	book1 = new book(title, author, pages, stat);
-	myLibrary.push(book1);
+//Cancel button
+var cancel = document.getElementById('cancel');
+cancel.addEventListener('click', () => {
+	newForm.style.display = 'none';
+});
 
-	var shelf = document.getElementById('books-container');
+//Put some initial book
+bookShow = new book('My Library', 'By Bojo', 80085, 'not finished');
+booksDisplay(bookShow);
+
+//local storage
+data.forEach((item) => {
+	booksDisplay(item);
+});
+
+//Display books
+function booksDisplay(newBook) {
 	var bookContainer = document.createElement('div');
 	bookContainer.classList.add('bookContainer');
-	bookContainer.dataset.index = myLibrary.length;
 	shelf.appendChild(bookContainer);
 
 	for (let i = 0; i < 5; i++) {
 		var item = document.createElement('p');
 		item.classList.add('item');
 		bookContainer.appendChild(item);
-		item.textContent = values[i];
 	}
 
 	var child = bookContainer.querySelectorAll('p');
+	child[0].textContent = newBook.title;
+	child[1].textContent = newBook.author;
+	child[2].textContent = newBook.pages;
 	child[2].style.display = 'none';
 	child[3].style.display = 'none';
 
-	//toggle button
-	var btn2 = document.createElement('BUTTON');
-	btn2.classList.add('btn-toggle');
-	btn2.textContent = 'Finished';
-	bookContainer.appendChild(btn2);
-
-	btn2.addEventListener('click', () => {
-		if (btn2.textContent == 'Finished') {
-			btn2.textContent = 'Not Finished';
-			book1.stat = 'Finished';
-			child[3].textContent = book1.stat;
-			child[3].style.color = '#76C092';
-		} else if (btn2.textContent == 'Not Finished') {
-			btn2.textContent = 'Finished';
-			book1.stat = 'Not Finished';
-			child[3].textContent = book1.stat;
-			child[3].style.color = '#FF6666';
-		}
-	});
-
-	btn2.style.display = 'none';
-	
-	
 	//Delete button
 	var btn = document.createElement('BUTTON');
 	btn.classList.add('btn-delete');
@@ -144,15 +80,37 @@ function newBook() {
 	bookContainer.appendChild(btn);
 
 	btn.addEventListener('click', () => {
-		//replace the obj with an empty string to keep the same index
-		myLibrary.splice(bookContainer.dataset.index - 1, 1, '');
+		deleteBook(newBook.title);
 		bookContainer.remove();
 	});
 
 	btn.style.display = 'none';
 
-	
+	//toggle button
 
+	var btn2 = document.createElement('BUTTON');
+	btn2.classList.add('btn-toggle');
+	btn2.textContent = 'Finished';
+	if (newBook.stat === 'Finished') {
+		btn2.style.opacity = '1';
+	} else {
+		btn2.style.opacity = '0.5';
+	}
+	bookContainer.appendChild(btn2);
+
+	btn2.addEventListener('click', () => {
+		if (btn2.style.opacity === '1') {
+			btn2.style.opacity = '0.5';
+		} else {
+			btn2.style.opacity = '1';
+		}
+
+		toggleFinished(newBook.title);
+	});
+
+	btn2.style.display = 'none';
+
+	//Book forward display
 	bookContainer.addEventListener('click', () => {
 		bookContainer.classList.toggle('preview');
 		if (btn.style.display === 'none') {
@@ -165,7 +123,6 @@ function newBook() {
 			child[1].style.position = 'relative';
 			child[1].style.textShadow = '2px 2px #000';
 			child[2].style.display = 'block';
-			child[3].style.display = 'block';
 		} else {
 			btn.style.display = 'none';
 			btn2.style.display = 'none';
@@ -180,4 +137,30 @@ function newBook() {
 	});
 }
 
-onStart();
+//Add a new book trough the form
+function addBookToLibrary() {
+	book1 = new book(title, author, pages, stat);
+	myLibrary.push(book1);
+	localStorage.setItem('items', JSON.stringify(myLibrary));
+}
+
+function deleteBook(bookTitle) {
+	for (let i = 0; i < myLibrary.length; i++) {
+		if (myLibrary[i].title === bookTitle) {
+			myLibrary.splice([ i ], 1);
+			localStorage.setItem('items', JSON.stringify(myLibrary));
+		}
+	}
+}
+
+function toggleFinished(bookTitle) {
+	for (let i = 0; i < myLibrary.length; i++) {
+		if (myLibrary[i].title === bookTitle && myLibrary[i].stat === 'not finished') {
+			myLibrary[i].stat = 'Finished';
+			localStorage.setItem('items', JSON.stringify(myLibrary));
+		} else if (myLibrary[i].title === bookTitle && myLibrary[i].stat === 'Finished') {
+			myLibrary[i].stat = 'not finished';
+			localStorage.setItem('items', JSON.stringify(myLibrary));
+		}
+	}
+}
