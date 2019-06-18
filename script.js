@@ -46,7 +46,7 @@ cancel.addEventListener('click', () => {
 });
 
 //Put some initial book
-bookShow = new book('My Library', 'By Bojo', 80085, 'not finished');
+bookShow = new book('My Library', 'By Bojo', 456, 'not finished');
 booksDisplay(bookShow);
 
 //local storage
