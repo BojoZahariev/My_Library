@@ -1,3 +1,3 @@
-A library app.
+A personal library app working with Internal Storage.
 
 
